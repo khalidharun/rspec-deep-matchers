@@ -24,7 +24,7 @@ module Deep
             if !@target.has_key?(key)
               @diff.push @path + ': Key missing'
               result = false
-            elsif !DeepInclude.new(@expectation[key], @diff, @path + '/' + key).matches?(@target[key])
+            elsif !DeepInclude.new(@expectation[key], @diff, @path + '/' + key.to_s).matches?(@target[key])
               result = false
             end
           end
