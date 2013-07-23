@@ -43,11 +43,11 @@ module Deep
       end
 
       def failure_message_for_should
-        "expected #{@target.inspect} to be deep_included with #{@expectation.inspect}\n\nDiff:\n #{@diff.join("\n")}"
+        "expected #{@expectation.inspect} to be included in #{@target.inspect}\n\nDiff:\n #{@diff.join("\n")}"
       end
 
       def failure_message_for_should_not
-        "expected #{@target.inspect} not to be in deep_included with #{@expectation.inspect}"
+        "expected #{@expectation.inspect} to not be included in #{@target.inspect}"
       end
     end
 
