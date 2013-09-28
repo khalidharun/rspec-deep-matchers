@@ -22,7 +22,7 @@ module Deep
           @expectation.keys.each do |key|
 
             if !@target.has_key?(key)
-              @diff.push @path + ': Key missing'
+              @diff.push @path + '/' + key + ': Key missing'
               result = false
             elsif !DeepInclude.new(@expectation[key], @diff, @path + '/' + key.to_s).matches?(@target[key])
               result = false
@@ -43,11 +43,27 @@ module Deep
       end
 
       def failure_message_for_should
-        "expected #{@expectation.inspect} to be included in #{@target.inspect}\n\nDiff:\n #{@diff.join("\n")}"
-      end
+<<EOF
+#### expected:
+#{@expectation.awesome_inspect}
+#### to be included in:
+#{@target.awesome_inspect}
+
+Diff:
+#{@diff.join("\n")}"
+EOF
+     end
 
       def failure_message_for_should_not
-        "expected #{@expectation.inspect} to not be included in #{@target.inspect}"
+<<EOF
+#### expected:
+#{@expectation.awesome_inspect}
+#### to NOT be included in:
+#{@target.awesome_inspect}
+
+Diff:
+#{@diff.join("\n")}"
+EOF
       end
     end
 
