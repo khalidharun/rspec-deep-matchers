@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'rspec', '>= 2.0.0'
+  s.add_dependency 'awesome_print'
 
   s.add_development_dependency('guard-rspec')
   s.add_development_dependency('growl')

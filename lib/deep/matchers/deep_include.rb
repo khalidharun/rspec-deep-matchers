@@ -22,16 +22,16 @@ module Deep
           @expectation.keys.each do |key|
 
             if !@target.has_key?(key)
-              @diff.push @path + '/' + key + ': Key missing'
+              @diff.push @path + '.' + key.to_s + ': Key missing'
               result = false
-            elsif !DeepInclude.new(@expectation[key], @diff, @path + '/' + key.to_s).matches?(@target[key])
+            elsif !DeepInclude.new(@expectation[key], @diff, @path + '.' + key.to_s).matches?(@target[key])
               result = false
             end
           end
         when Array
 #          result &&= @target.is_a?(Array) && @target.count == @expectation.count
           @expectation.each_index do |index|
-            result &&= DeepInclude.new(@expectation[index], @diff, @path + "/[#{index}]").matches?(@target[index])
+            result &&= DeepInclude.new(@expectation[index], @diff, @path + ".[#{index}]").matches?(@target[index])
           end
         else
           if @target != @expectation
