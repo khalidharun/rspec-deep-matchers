@@ -42,7 +42,7 @@ module Deep
         result
       end
 
-      def failure_message_for_should
+      def failure_message
 <<EOF
 #### expected:
 #{@expectation.awesome_inspect}
@@ -54,7 +54,7 @@ Diff:
 EOF
      end
 
-      def failure_message_for_should_not
+      def failure_message_when_negated
 <<EOF
 #### expected:
 #{@expectation.awesome_inspect}
